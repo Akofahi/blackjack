@@ -54,7 +54,7 @@ const deck = [{ name: "King of Hearts", value: 10, pic: "KH.png", },
 { name: "Nine of Clubs", value: 9, pic: "9C.png", },
 { name: "Ten of Clubs", value: 10, pic: "10C.png", },]
 
-let tempDeck = JSON.parse(JSON.stringify(deck));;
+
 function draw() {
     let index = Math.floor(Math.random() * tempDeck.length)
     let card = tempDeck[index];
@@ -71,14 +71,13 @@ const compare = (x, y) => {
     }
     else { score.innerHTML = "Draw!" }
 }
-
+let tempDeck;
 let sum1 = 0;
 let sum2 = 0;
 let list1 = document.getElementById("list1");
 let images1 = document.getElementById("images1");
 let list2 = document.getElementById("list2");
 let images2 = document.getElementById("images2");
-
 let score1 = document.getElementById("score1");
 let score2 = document.getElementById("score2");
 
@@ -98,6 +97,11 @@ function ng() {
     let d1Card2 = draw();
     let d2Card1 = draw();
     let d2Card2 = draw();
+
+    let btn1 = document.getElementById("hit");
+    btn1.disabled = false;
+    let btn2 = document.getElementById("stand");
+    btn2.disabled = false;
 
     list1.innerHTML = "";
     images1.innerHTML = "";
@@ -120,7 +124,7 @@ function ng() {
     p2.innerHTML = sum2;
     score2.appendChild(p2);
 
-    compare(sum1, sum2);
+    score.innerHTML = "Stand or Hit"
 
 }
 
@@ -129,10 +133,17 @@ const hit = () => {
     appendCard(list2, images2, d2Card3);
     sum2 += Number(d2Card3.value);
     console.log(sum2)
-score2.innerHTML = sum2;
-if(sum2<=21){
-    compare(sum1, sum2);}else{
+    score2.innerHTML = sum2;
+    if (sum2 <= 21) {
+        compare(sum1, sum2);
+    } else {
         score.innerHTML = "Computer Wins!"
+    }
+    if (sum1 >= 21 || sum2 >= 21) {
+        let btn1 = document.getElementById("hit");
+        btn1.disabled = true;
+        let btn2 = document.getElementById("stand");
+        btn2.disabled = true;
     }
 
 }
@@ -142,10 +153,17 @@ const stand = () => {
     appendCard(list1, images1, d1Card3);
     sum1 += Number(d1Card3.value);
     console.log(sum1)
-score1.innerHTML = sum1;
-if(sum1<=21){
-    compare(sum1, sum2);}else{
+    score1.innerHTML = sum1;
+    if (sum1 <= 21) {
+        compare(sum1, sum2);
+    } else {
         score.innerHTML = "Player Wins!"
+    }
+    if (sum1 >= 21 || sum2 >= 21) {
+        let btn1 = document.getElementById("hit");
+        btn1.disabled = true;
+        let btn2 = document.getElementById("stand");
+        btn2.disabled = true;
     }
 
 }
