@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="deck" id="deck1">
+        <h3>Computer</h3>
+
+        <div class="list" id="list1"> </div>
+            <div>
+                <p>Total</p>
+                <p id="score1"></p>
+            </div>
+       
+
+        <div class="images" id="images1"></div>
+    </div>
+    <div class="deck" id="deck2">
+        <h3>Player</h3>
+
+        <div class="list" id="list2"></div>
+            <div>
+                <p>Total</p>
+                <p id="score2"></p>
+            </div>
+        
+
+        <div class="images" id="images2"></div>
+    </div>
+    <div class="score">
+        <h2 id="score">Start The game</h2>
+    </div>
+    <div class="terminal">
+        <button id="hit" onclick="hit()">Hit</button>
+        <button id="stand" onclick="stand()">Stand</button>
+        <button id="ng" onclick="ng()">NewGame</button>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
